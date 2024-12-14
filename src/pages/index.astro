@@ -1,16 +1,10 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
+import Greeting from '../components/Greeting';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>A2937's activity log</title>
-	</head>
-	<body>
-		<h1>Coding related activities completed</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My subtitle</h2>
+  <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+</BaseLayout>
