@@ -1,13 +1,19 @@
 ---
-import MarkdownPost from '../components/MarkdownPost.astro';
-import BaseLayout from '../layouts/BaseLayout.astro'
-const allPosts = Object.values(import.meta.glob('./personal/*.md', { eager: true }));
+import MarkdownPost from "../components/MarkdownPost.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const allPosts = Object.values(
+  import.meta.glob("./personal/*.md", { eager: true }),
+);
 const pageTitle = "Personal Activity Log";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <p>This is what I've been up to</p>
   <ul>
-     {allPosts.map((post: any) => <MarkdownPost url={post.url} title={post.frontmatter.title}/>)}
+    {
+      allPosts.map((post: any) => (
+        <MarkdownPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
 </BaseLayout>
