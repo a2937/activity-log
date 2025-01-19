@@ -1,7 +1,8 @@
 ---
+import { getCollection } from "astro:content";
 import MarkdownPost from "../components/MarkdownPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const allPosts = Object.values(import.meta.glob("./fcc/*.md", { eager: true }));
+const fccPosts = await getCollection("fcc");
 const pageTitle = "FreeCodeCamp Activity Log";
 ---
 
@@ -9,8 +10,8 @@ const pageTitle = "FreeCodeCamp Activity Log";
   <p>This is what I've worked on for FreeCodeCamp.</p>
   <ul>
     {
-      allPosts.map((post: any) => (
-        <MarkdownPost url={post.url} title={post.frontmatter.title} />
+      fccPosts.map((post: any) => (
+        <MarkdownPost url={`${post.id}/`} title={post.data.title} />
       ))
     }
   </ul>
